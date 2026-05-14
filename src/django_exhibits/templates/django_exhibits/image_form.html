@@ -1,0 +1,6 @@
+<form id="image-upload-form" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form }}
+  <button type="button" id="image-modal-close" class="btn btn-secondary">Close</button>
+  <button type="button" id="image-submit" class="btn btn-primary">Save changes</button>
+</form>
