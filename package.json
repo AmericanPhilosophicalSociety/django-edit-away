@@ -1,0 +1,37 @@
+{
+  "name": "django-exhibits",
+  "version": "0.1.0",
+  "description": "Django integration for a tiptap rich text editor",
+  "homepage": "https://github.com/AmericanPhilosophicalSociety/django-exhibits#readme",
+  "bugs": {
+    "url": "https://github.com/AmericanPhilosophicalSociety/django-exhibits/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmericanPhilosophicalSociety/django-exhibits.git"
+  },
+  "license": "Apache-2.0",
+  "author": "David Ragnar Nelson",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --mode development --watch",
+    "sass": "sass assets/styles/main.scss src/django_exhibits/static/css/tiptap.css"
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.4",
+    "sass-loader": "^16.0.8",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.106.2",
+    "webpack-cli": "^7.0.2"
+  },
+  "dependencies": {
+    "@tiptap/core": "^3.23.4",
+    "@tiptap/extension-youtube": "^3.23.4",
+    "@tiptap/pm": "^3.23.4",
+    "@tiptap/starter-kit": "^3.23.4",
+    "remixicon": "^4.9.1",
+    "sass": "^1.99.0"
+  }
+}
