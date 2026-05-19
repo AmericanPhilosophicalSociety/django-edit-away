@@ -33,7 +33,7 @@ const toolbarActions = [
     { id: '#editor-clear', name: 'clear marks', command: 'unsetAllMarks', disable: true },
 ]
 
-export function tiptapInit(ele) {
+export function tiptapInit(ele, fieldName) {
     const editor = new Editor({
         element: document.querySelector(ele),
         extensions: [
@@ -68,7 +68,7 @@ export function tiptapInit(ele) {
             checkActive();
         },
     });
-    editorText = JSON.parse(document.querySelector('#id_tiptap').value);
+    const editorText = JSON.parse(document.querySelector(`#${fieldName}`).value);
     if (editorText) {
         editor.commands.setContent(editorText.json_value);
     }
@@ -477,7 +477,7 @@ export function tiptapInit(ele) {
             html: htmlContent,
             json_value: jsonContent
         };
-        const jsonInput = document.querySelector('#id_tiptap');
+        const jsonInput = document.querySelector(`#${fieldName}`);
         jsonInput.value = JSON.stringify(databaseValue);
         form.submit();
     }

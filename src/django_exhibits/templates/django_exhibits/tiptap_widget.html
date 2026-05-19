@@ -1,3 +1,4 @@
+<p>{{ name }}</p>
 <div class="control-group">
   <div class="button-group">
     <button class="editor-btn editor-dropdown-toggle" id="h-dropdown" type="button" aria-expanded="false"><i class="ri-heading"></i><i class="ri-arrow-drop-down-line"></i></button>
@@ -35,5 +36,8 @@
 </div>
 <div id="editor"></div>
 <script>
-    djangoEditor.createTiptap('#editor');
+    const fieldName = '{{ name|escapejs }}'
+    console.log("Hey bitch!")
+    console.log(fieldName)
+    djangoEditor.createTiptap('#editor', fieldName);
 </script>
