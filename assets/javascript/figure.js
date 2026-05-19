@@ -50,9 +50,12 @@ export const Figure = Node.create({
     },
 
     renderHTML({HTMLAttributes}) {
+        const cssClass = HTMLAttributes.class
+        // remove CSS class so it is not passed to img
+        delete HTMLAttributes.class
         return [
             'div',
-            { class: HTMLAttributes.class, },
+            { class: cssClass, },
             [
                 'figure',
                 this.options.HTMLAttributes,
