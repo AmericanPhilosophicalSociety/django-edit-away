@@ -17,21 +17,6 @@ import { Figure } from './figure.js';
 
 import { csrftoken } from './cookies.js';
 
-// actions that do not require custom logic
-const toolbarActions = [
-    { id: '#editor-h1', name: 'heading', command: 'toggleHeading', disable: true, argument: { level: 1 } },
-    { id: '#editor-h2', name: 'heading', command: 'toggleHeading', disable: true, argument: { level: 2 } },
-    { id: '#editor-h3', name: 'heading', command: 'toggleHeading', disable: true, argument: { level: 3 } },
-    { id: '#editor-bold', name: 'bold', command: 'toggleBold', disable: true },
-    { id: '#editor-italic', name: 'italic', command: 'toggleItalic', disable: true },
-    { id: '#editor-underline', name: 'underline', command: 'toggleUnderline', disable: true },
-    { id: '#editor-ol', name: 'orderedList', command: 'toggleOrderedList', disable: true  },
-    { id: '#editor-ul', name: 'bulletList', command: 'toggleBulletList', disable: true },
-    // BUG: Removing links from this list means their activity is not tracked
-    // { id: '#editor-link', name: 'link', command: 'toggleLink', disable: true },
-    { id: '#editor-blockquote', name: 'blockquote', command: 'toggleBlockquote', disable: true },
-    { id: '#editor-clear', name: 'clear marks', command: 'unsetAllMarks', disable: true },
-]
 
 export function tiptapInit(ele, fieldName) {
     const editor = new Editor({
@@ -68,6 +53,23 @@ export function tiptapInit(ele, fieldName) {
             checkActive();
         },
     });
+
+    // actions that do not require custom logic
+    const toolbarActions = [
+        { id: `#${fieldName}-editor-h1`, name: 'heading', command: 'toggleHeading', disable: true, argument: { level: 1 } },
+        { id: `#${fieldName}-editor-h2`, name: 'heading', command: 'toggleHeading', disable: true, argument: { level: 2 } },
+        { id: `#${fieldName}-editor-h3`, name: 'heading', command: 'toggleHeading', disable: true, argument: { level: 3 } },
+        { id: `#${fieldName}-editor-bold`, name: 'bold', command: 'toggleBold', disable: true },
+        { id: `#${fieldName}-editor-italic`, name: 'italic', command: 'toggleItalic', disable: true },
+        { id: `#${fieldName}-editor-underline`, name: 'underline', command: 'toggleUnderline', disable: true },
+        { id: `#${fieldName}-editor-ol`, name: 'orderedList', command: 'toggleOrderedList', disable: true  },
+        { id: `#${fieldName}-editor-ul`, name: 'bulletList', command: 'toggleBulletList', disable: true },
+        // BUG: Removing links from this list means their activity is not tracked
+        // { id: '#editor-link', name: 'link', command: 'toggleLink', disable: true },
+        { id: `#${fieldName}-editor-blockquote`, name: 'blockquote', command: 'toggleBlockquote', disable: true },
+        { id: `#${fieldName}-editor-clear`, name: 'clear marks', command: 'unsetAllMarks', disable: true },
+    ]
+
     const editorText = JSON.parse(document.querySelector(`#${fieldName}`).value);
     if (editorText) {
         editor.commands.setContent(editorText.json_value);
@@ -117,7 +119,6 @@ export function tiptapInit(ele, fieldName) {
                 } else {
                     if (editor.isActive(a.name)) {
                         b.classList.add('active')
-                        console.log("I'm active!")
                     }
                 }
             }
@@ -128,19 +129,24 @@ export function tiptapInit(ele, fieldName) {
 
     // dropdowns
 
-    const dropdown = document.querySelector('#h-dropdown');
+    const dropdown = document.querySelector(`#${fieldName}-h-dropdown`);
+    dropdown.addEventListener('mousedown', (evt) => {
+        evt.preventDefault();
+    });
+
     dropdown.addEventListener('click', dropdownHandler);
 
+    // BUG: Dropdown needs to preserve cursor position in editor
     function dropdownHandler() {
-        const content = document.querySelector('.editor-dropdown-menu');
+        const content = document.querySelector(`#${fieldName}-editor-dropdown-menu`);
         content.classList.toggle('expanded');
-        content.addEventListener('click', () => {
+        content.addEventListener('click', (evt) => {
             content.classList.remove('expanded')
         });
     }
 
     // links
-    const linkButton = document.querySelector('#editor-link')
+    const linkButton = document.querySelector(`#${fieldName}-editor-link`)
 
     // activate event listeners for popover after first click, otherwise they don't exist
     linkButton.addEventListener('click', linkHandler);
@@ -229,7 +235,7 @@ export function tiptapInit(ele, fieldName) {
     document.querySelectorAll('.tiptap a').forEach((e) => e.addEventListener('click', linkEdit));
 
     // videos
-    const videoButton = document.querySelector('#editor-youtube')
+    const videoButton = document.querySelector(`#${fieldName}-editor-youtube`)
 
     videoButton.addEventListener('click', videoHandler);
 
@@ -353,7 +359,7 @@ export function tiptapInit(ele, fieldName) {
     }
 
     // image figure
-    const figureButton = document.querySelector('#editor-figure');
+    const figureButton = document.querySelector(`#${fieldName}-editor-figure`);
 
     figureButton.addEventListener('click', addFigure);
 

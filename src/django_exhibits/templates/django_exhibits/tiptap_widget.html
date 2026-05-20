@@ -1,41 +1,40 @@
-<p>{{ name }}</p>
 <div class="control-group">
   <div class="button-group">
-    <button class="editor-btn editor-dropdown-toggle" id="h-dropdown" type="button" aria-expanded="false"><i class="ri-heading"></i><i class="ri-arrow-drop-down-line"></i></button>
-    <ul class="editor-dropdown-menu">
-        <li class="editor-dropdown-item"><button id="editor-h1" class="editor-btn" type="button"><i class="ri-h-1"></i></button></li>
-        <li class="editor-dropdown-item"><button id="editor-h2" class="editor-btn" type="button"><i class="ri-h-2"></i></button></li>
-        <li class="editor-dropdown-item"><button id="editor-h3" class="editor-btn" type="button"><i class="ri-h-3"></i></button></li>
+    <button class="editor-btn editor-dropdown-toggle" id="{{ name }}-h-dropdown" type="button" aria-expanded="false"><i class="ri-heading"></i><i class="ri-arrow-drop-down-line"></i></button>
+    <ul id="{{name}}-editor-dropdown-menu" class="editor-dropdown-menu">
+        <li class="editor-dropdown-item"><button id="{{ name }}-editor-h1" class="editor-btn" type="button"><i class="ri-h-1"></i></button></li>
+        <li class="editor-dropdown-item"><button id="{{ name }}-editor-h2" class="editor-btn" type="button"><i class="ri-h-2"></i></button></li>
+        <li class="editor-dropdown-item"><button id="{{ name }}-editor-h3" class="editor-btn" type="button"><i class="ri-h-3"></i></button></li>
     </ul>
   </div>
   <div class="editor-separator" data-orientation="vertical" role="none" aria-hidden="true"></div>
   <div class="button-group">
-    <button class="editor-btn" id="editor-bold" type="button"><i class="ri-bold"></i></button>
-    <button class="editor-btn" id="editor-italic" type="button"><i class="ri-italic"></i></button>
-    <button class="editor-btn" id="editor-underline" type="button"><i class="ri-underline"></i></button>
+    <button class="editor-btn" id="{{ name }}-editor-bold" type="button"><i class="ri-bold"></i></button>
+    <button class="editor-btn" id="{{ name }}-editor-italic" type="button"><i class="ri-italic"></i></button>
+    <button class="editor-btn" id="{{ name }}-editor-underline" type="button"><i class="ri-underline"></i></button>
   </div>
   <div class="editor-separator" data-orientation="vertical" role="none" aria-hidden="true"></div>
   <div class="button-group">
-    <button class="editor-btn" id="editor-ol" type="button"><i class="ri-list-ordered"></i></button>
-    <button class="editor-btn" id="editor-ul" type="button"><i class="ri-list-unordered"></i></button>
+    <button class="editor-btn" id="{{ name }}-editor-ol" type="button"><i class="ri-list-ordered"></i></button>
+    <button class="editor-btn" id="{{ name }}-editor-ul" type="button"><i class="ri-list-unordered"></i></button>
   </div>
   <div class="editor-separator" data-orientation="vertical" role="none" aria-hidden="true"></div>
   <div class="button-group">
-    <button class="editor-btn" id="editor-link" type="button"><i class="ri-link"></i></button>
-    <button class="editor-btn" id="editor-figure" type="button"><i class="ri-image-fill"></i></button>
-    <button class="editor-btn" id="editor-youtube" type="button"><i class="ri-video-fill"></i></button>
+    <button class="editor-btn" id="{{ name }}-editor-link" type="button"><i class="ri-link"></i></button>
+    <button class="editor-btn" id="{{ name }}-editor-figure" type="button"><i class="ri-image-fill"></i></button>
+    <button class="editor-btn" id="{{ name }}-editor-youtube" type="button"><i class="ri-video-fill"></i></button>
   </div>
   <div class="editor-separator" data-orientation="vertical" role="none" aria-hidden="true"></div>
   <div class="button-group">
-    <button class="editor-btn" id="editor-blockquote" type="button"><i class="ri-quote-text"></i></button>
+    <button class="editor-btn" id="{{ name }}-editor-blockquote" type="button"><i class="ri-quote-text"></i></button>
   </div>
   <div class="editor-separator" data-orientation="vertical" role="none" aria-hidden="true"></div>
   <div class="button-group">
-    <button class="editor-btn" id="editor-clear" type="button"><i class="ri-format-clear"></i></button>
+    <button class="editor-btn" id="{{ name }}-editor-clear" type="button"><i class="ri-format-clear"></i></button>
   </div>
 </div>
-<div id="editor"></div>
+<div id="{{ name }}-editor"></div>
 <script>
     const fieldName = '{{ name|escapejs }}'
-    djangoEditor.createTiptap('#editor', fieldName);
+    djangoEditor.createTiptap(`#${fieldName}-editor`, fieldName);
 </script>
