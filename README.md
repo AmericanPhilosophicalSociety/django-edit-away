@@ -26,7 +26,7 @@ class Description(models.Model):
     body = TiptapField()
 ```
 
-Under the hood, ```TiptapField``` stores data as a ```JSONField``` with two values, ```html``` and ```json_value```. The convenience wrapper ```django_exhibits.tiptap.Tiptap``` provides a ready-made object for holding this data in Python. HTML sanitization is handled via Tiptap. When you use a ```TiptapField``` in a form, the data is always saved from the JSON representation in the Tiptap editor, never from the HTML representation. This means it is only possible to modify the stored HTML via the Django shell or direct database access. More robust HTML sanitization for these circumstances is a future work plan.
+Under the hood, ```TiptapField``` stores data as a ```JSONField``` with two values, ```html``` and ```json_value```. The convenience wrapper ```django_exhibits.tiptap.Tiptap``` provides a ready-made object for holding this data in Python. HTML sanitization is handled via Tiptap. When you use a ```TiptapField``` in a form, the data is always saved from the JSON representation in the Tiptap editor, never from the HTML representation. This means it is only possible to directly modify the stored HTML via the Django shell or direct database access. More robust HTML sanitization for these circumstances is a future work plan.
 
 ## In forms
 
@@ -64,7 +64,7 @@ url_patterns = [
 ]
 ```
 
-The AJAX requests that make image uploads work expect the urlconf to be served from root, so it is essential to follow this configuratione exactly. The path ```/image-upload``` should be considered a reserved path for projects using this package.
+The AJAX requests that make image uploads work expect the urlconf to be served from root, so it is essential to follow this configuration exactly. The path ```/image-upload``` should be considered a reserved path for projects using this package.
 
 Uploaded and embedded images can have either the class ```.inline-ref``` or ```.parallax-ref```. The styling of these classes is left to the user, but we hope to provide sample styling in the near future.
 
