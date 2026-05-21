@@ -17,6 +17,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --mode development --watch",
+    "prod": "webpack --mode production",
+    "stats": "webpack --profile --json > stats.json"
   },
   "devDependencies": {
     "css-loader": "^7.1.4",

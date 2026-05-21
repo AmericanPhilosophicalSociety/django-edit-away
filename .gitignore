@@ -60,7 +60,6 @@ cover/
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-node_modules/
 
 # Flask stuff:
 instance/
@@ -207,3 +206,7 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# JavaScript stuff
+node_modules/
+stats.json
