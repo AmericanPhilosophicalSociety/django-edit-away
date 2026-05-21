@@ -17,7 +17,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --mode development --watch",
-    "sass": "sass assets/styles/main.scss src/django_exhibits/static/css/tiptap.css"
   },
   "devDependencies": {
     "css-loader": "^7.1.4",
