@@ -48,6 +48,10 @@
   border: 1px solid lightgray;
 }
 
+.module .editor-btn {
+  background-color: inherit;
+}
+
 .editor-btn.active {
   border-color: black;
 }
@@ -95,6 +99,11 @@
           text-align: center;
           width: 100%;
         }
+    }
+    h2 {
+      background-color: inherit;
+      font-size: 1rem;
+
     }
 }
 
