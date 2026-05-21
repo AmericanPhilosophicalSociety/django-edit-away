@@ -47,7 +47,7 @@ export function tiptapInit(ele, fieldName) {
             UndoRedo,
             Figure,
         ],
-        content: '<p>Sing, O Muse, of the history of science...</p>',
+        content: '<p>Sing, O Muse...</p>',
         
         onTransaction({ editor }) {
             checkActive();
