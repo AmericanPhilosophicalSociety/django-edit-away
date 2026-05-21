@@ -35,6 +35,5 @@
 </div>
 <div id="{{ name }}-editor"></div>
 <script>
-    const fieldName = '{{ name|escapejs }}'
-    djangoEditor.createTiptap(`#${fieldName}-editor`, fieldName);
+    djangoEditor.createTiptap('#' + '{{ name|escapejs }}' + '-editor', '{{ name|escapejs }}');
 </script>
