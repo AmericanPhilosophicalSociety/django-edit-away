@@ -8,7 +8,7 @@ export default {
     entry: './assets/index.js',
     output: {
         filename: 'tiptap.js',
-        path: path.resolve(__dirname, './src/django_exhibits/static/js'),
+        path: path.resolve(__dirname, './src/django_exhibits/static/django_exhibits'),
         library: 'djangoEditor',
     },
     module: {

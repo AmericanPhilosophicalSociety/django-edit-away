@@ -1,5 +1,5 @@
 [project]
-name = "django-exhibits"
+name = "django-edit-away"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -26,11 +26,16 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/AmericanPhilosophicalSociety/django-exhibits"
+Repository = "https://github.com/AmericanPhilosophicalSociety/django-edit-away"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.hatch.build]
+artifacts = [
+    "static/",
+]
 
 [tool.ruff.format]
 quote-style = "single"

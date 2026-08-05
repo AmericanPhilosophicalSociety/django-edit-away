@@ -468,7 +468,7 @@ export function tiptapInit(ele, fieldName) {
 
     // handle saving the editor
 
-    const form = document.querySelector('form');
+    const form = document.querySelector(`form:has(${ele}`);
 
 
     form.addEventListener('submit', function(evt) {

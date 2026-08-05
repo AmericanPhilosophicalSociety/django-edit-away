@@ -1,16 +1,16 @@
-# django-exhibits
+# django-edit-away
 WIP exhibit crafter for Django for use in the digital humanities. At the moment, it provides a [Tiptap](https://tiptap.dev/) rich text editor with built-in support for embedding images and Youtube videos.
 
 # Installation
 
 TBD - right now, installing requires compiling the JavaScript dependencies via NPM. A fix is in the works.
 
-Add ```django_exhibits``` to ```INSTALLED_APPS``` in ```settings.py```:
+Add ```django_edit_away``` to ```INSTALLED_APPS``` in ```settings.py```:
 
 ```
 INSTALLED_APPS = [
     # ...
-    'django_exhibits',
+    'django_edit_away',
 ]
 ```
 # Usage
@@ -19,14 +19,14 @@ Add ```TiptapField``` to your models:
 
 ```
 from django.db import models
-from django_exhibits.models import TiptapField
+from django_edit_away.models import TiptapField
 
 
 class Description(models.Model):
     body = TiptapField()
 ```
 
-Under the hood, ```TiptapField``` stores data as a ```JSONField``` with two values, ```html``` and ```json_value```. The convenience wrapper ```django_exhibits.tiptap.Tiptap``` provides a ready-made object for holding this data in Python. HTML sanitization is handled via Tiptap. When you use a ```TiptapField``` in a form, the data is always saved from the JSON representation in the Tiptap editor, never from the HTML representation. This means it is only possible to directly modify the stored HTML via the Django shell or direct database access. More robust HTML sanitization for these circumstances is a future work plan.
+Under the hood, ```TiptapField``` stores data as a ```JSONField``` with two values, ```html``` and ```json_value```. The convenience wrapper ```django_edit_away.tiptap.Tiptap``` provides a ready-made object for holding this data in Python. HTML sanitization is handled via Tiptap. When you use a ```TiptapField``` in a form, the data is always saved from the JSON representation in the Tiptap editor, never from the HTML representation. This means it is only possible to directly modify the stored HTML via the Django shell or direct database access. More robust HTML sanitization for these circumstances is a future work plan.
 
 ## In forms
 
@@ -53,14 +53,14 @@ Since the field stores the raw JSON representation, it is theoretically possible
 
 ## Uploading images
 
-To take advantage of the image upload feature, you must configure your [media settings](https://docs.djangoproject.com/en/6.0/howto/static-files/#serving-files-uploaded-by-a-user-during-development) and add ```django_exhibits.urls``` to your url configuration:
+To take advantage of the image upload feature, you must configure your [media settings](https://docs.djangoproject.com/en/6.0/howto/static-files/#serving-files-uploaded-by-a-user-during-development) and add ```django_edit_away.urls``` to your url configuration:
 
 ```
 from django.urls import path, include
 
 url_patterns = [
     # ...
-    path('', include('django_exhibits.urls)),
+    path('', include('django_edit_away.urls)),
 ]
 ```
 

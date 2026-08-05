@@ -1,14 +1,14 @@
 {
-  "name": "django-exhibits",
+  "name": "django-edit-away",
   "version": "0.1.0",
   "description": "Django integration for a tiptap rich text editor",
-  "homepage": "https://github.com/AmericanPhilosophicalSociety/django-exhibits#readme",
+  "homepage": "https://github.com/AmericanPhilosophicalSociety/django-edit-away#readme",
   "bugs": {
-    "url": "https://github.com/AmericanPhilosophicalSociety/django-exhibits/issues"
+    "url": "https://github.com/AmericanPhilosophicalSociety/django-edit-away/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AmericanPhilosophicalSociety/django-exhibits.git"
+    "url": "git+https://github.com/AmericanPhilosophicalSociety/django-edit-away.git"
   },
   "license": "Apache-2.0",
   "author": "David Ragnar Nelson",
