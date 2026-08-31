@@ -57,7 +57,7 @@ class ImageUploadView(BaseFormView):
         """
         if request.headers.get("x-requested-with") == "XMLHttpRequest":
             form = ImageForm()
-            html = render_to_string("django_exhibits/image_form.html", {"form": form})
+            html = render_to_string("django_edit_away/image_form.html", {"form": form})
             return JsonResponse(html, safe=False)
 
         return super().get(self, request, *args, **kwargs)

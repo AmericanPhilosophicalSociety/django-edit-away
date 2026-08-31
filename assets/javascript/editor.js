@@ -72,7 +72,13 @@ export function tiptapInit(ele, fieldName) {
 
     const editorText = JSON.parse(document.querySelector(`#${fieldName}`).value);
     if (editorText) {
-        editor.commands.setContent(editorText.json_value);
+        // if json_value is empty, fall back to HTML
+        if (editorText.json_value === "") {
+            editor.commands.setContent(editorText.html);
+        }
+        else {
+            editor.commands.setContent(editorText.json_value);
+        }
     }
 
     for (let i = 0; i < toolbarActions.length; i++) {

@@ -1,6 +1,6 @@
 [project]
 name = "django-edit-away"
-version = "0.1.0"
+version = "0.1.1"
 description = "Add your description here"
 readme = "README.md"
 license = "Apache-2.0"
@@ -22,6 +22,7 @@ classifiers = [
 ]
 dependencies = [
     "django>=5.2.14",
+    "nh3>=0.3.7",
     "pillow>=12.2.0",
 ]
 

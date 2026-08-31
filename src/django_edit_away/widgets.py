@@ -4,7 +4,7 @@ from django.template.loader import render_to_string
 
 class TiptapWidget(Textarea):
     class Media:
-        js = ['django_exhibits/tiptap.js']
+        js = ['django_edit_away/tiptap.js']
 
     def render(self, name, value, attrs, renderer=None):
         print(name)
@@ -13,4 +13,4 @@ class TiptapWidget(Textarea):
         widget_attrs = {'name': attrs_for_textarea['id']}
         return super().render(
             name, value, attrs_for_textarea, renderer
-        ) + render_to_string("django_exhibits/tiptap_widget.html", context=widget_attrs)
+        ) + render_to_string("django_edit_away/tiptap_widget.html", context=widget_attrs)

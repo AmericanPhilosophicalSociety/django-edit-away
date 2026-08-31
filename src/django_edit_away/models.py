@@ -1,4 +1,5 @@
 from django.db import models
+import nh3
 
 from .tiptap import Tiptap
 from .serializers import TiptapJSONEncoder
@@ -26,6 +27,43 @@ class TiptapDescriptor:
 
         if isinstance(value, Tiptap):
             return value
+
+        elif isinstance(value, str):
+            # sanitize input
+            value = nh3.clean(
+                value,
+                tags={
+                    'p',
+                    'h1',
+                    'h2',
+                    'h3',
+                    'blockquote',
+                    'ul',
+                    'ol',
+                    'li',
+                    'br',
+                    'hr',
+                    'strong',
+                    'b',
+                    'em',
+                    'i',
+                    'u',
+                    'a',
+                    'img',
+                    'figure',
+                    'figcaption',
+                },
+                attributes={
+                    'a': {
+                        'href',
+                    },
+                    'img': {
+                        'alt',
+                        'src',
+                    },
+                },
+            )
+            return Tiptap(value, '')
         else:
             return Tiptap(**value)
 
@@ -50,6 +88,7 @@ class TiptapField(models.JSONField):
         return Tiptap(**db_value)
 
     def get_prep_value(self, value):
+        # if a string is passed, asssume it is naive HTML representation
         dict_val = value.to_dict()
         prep_val = super().get_prep_value(dict_val)
         return prep_val
