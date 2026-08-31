@@ -88,8 +88,10 @@ class TiptapField(models.JSONField):
         return Tiptap(**db_value)
 
     def get_prep_value(self, value):
-        # if a string is passed, asssume it is naive HTML representation
-        dict_val = value.to_dict()
+        if not isinstance(value, str):
+            dict_val = value
+        else:
+            dict_val = value.to_dict()
         prep_val = super().get_prep_value(dict_val)
         return prep_val
 
